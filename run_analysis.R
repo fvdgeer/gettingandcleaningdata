@@ -60,3 +60,4 @@ dataset3 <- merge(dataset2, activityNames, by="ActivityId", suffixes = c("", ".y
 # 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 meltedSet <- melt(dataset3, id.vars=c("ActivityName", "SubjectId"), measure.vars = 2:19)
 tidySet <- dcast(meltedSet, ActivityName + SubjectId ~ variable, mean)
+write.table(tidySet, file="./tidySet.txt", row.names = FALSE)
